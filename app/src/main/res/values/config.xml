@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="api_url" translatable="false">https://www.goodreads.com/</string>
+    <string name="goodreads_key" translatable="false">YOUR KEY</string>
+    <string name="goodreads_secret" translatable="false">YOUR SECRET</string>
+
+</resources>
