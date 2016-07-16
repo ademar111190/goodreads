@@ -6,13 +6,13 @@ def appVersionName = '1.0.0'
 
 android {
 
-    compileSdkVersion 24
+    compileSdkVersion 23
     buildToolsVersion '24.0.0'
 
     defaultConfig {
         applicationId 'ademar.goodreads'
         minSdkVersion 21
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode appVersionCode
         versionName appVersionName
         resConfigs 'pt', 'en'
@@ -55,33 +55,33 @@ configurations {
 
 dependencies {
 
-    kapt 'com.github.Raizlabs.DBFlow:dbflow-processor:3.0.1'
+    kapt 'com.github.Raizlabs.DBFlow:dbflow-processor:3.1.1'
     kapt 'com.google.dagger:dagger-compiler:2.5'
 
-    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.google.dagger:dagger:2.5'
     compile 'com.github.porquenao:gol:0.2.0'
     compile 'com.github.porquenao:recents:0.1.0'
-    compile 'com.github.Raizlabs.DBFlow:dbflow:3.0.1'
-    compile 'com.github.Raizlabs.DBFlow:dbflow-core:3.0.1'
-    compile 'com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:3.0.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.github.Raizlabs.DBFlow:dbflow:3.1.1'
+    compile 'com.github.Raizlabs.DBFlow:dbflow-core:3.1.1'
+    compile 'com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:3.1.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.retrofit2:converter-simplexml:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxjava:1.1.7'
     compile 'io.reactivex:rxkotlin:0.60.0'
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.2-1'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.3'
 
     kaptTest 'com.google.dagger:dagger-compiler:2.5'
 
-    testCompile 'com.android.support:support-annotations:24.0.0'
+    testCompile 'com.android.support:support-annotations:23.4.0'
     testCompile 'com.squareup.assertj:assertj-android:1.1.1'
-    testCompile 'com.squareup.okhttp3:mockwebserver:3.3.1'
+    testCompile 'com.squareup.okhttp3:mockwebserver:3.4.1'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
-    testCompile 'org.robolectric:robolectric:3.1'
+    testCompile 'org.robolectric:robolectric:3.1.1'
 
 }
