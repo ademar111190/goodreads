@@ -1,9 +1,6 @@
 package ademar.goodreads
 
-import ademar.goodreads.core.initializer.AppInitializer
-import ademar.goodreads.core.initializer.DatabaseInitializer
-import ademar.goodreads.core.initializer.GolInitializer
-import ademar.goodreads.core.initializer.InitializerManager
+import ademar.goodreads.core.initializer.*
 import android.app.Application
 
 class App : Application() {
@@ -14,6 +11,7 @@ class App : Application() {
         InitializerManager.start(
                 AppInitializer(),
                 GolInitializer(),
+                RecentsInitializer(),
                 DatabaseInitializer())
     }
 
