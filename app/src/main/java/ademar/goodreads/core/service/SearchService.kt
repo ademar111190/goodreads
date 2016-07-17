@@ -12,7 +12,7 @@ interface SearchService {
 
     @GET("search.xml")
     fun search(
-            @Query("q") query: String,
+            @Query("q") query: CharSequence,
             @Query("page") page: Int = 1,
             @Query("search[field]") field: SearchField = SearchField.ALL,
             @Query("key") key: String = app().getString(R.string.goodreads_key)

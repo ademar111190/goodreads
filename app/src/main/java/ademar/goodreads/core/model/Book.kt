@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root
 class Book {
 
     @field:Element(name = "id")
-    var id: Int = 0
+    var id: Long = 0
 
     @field:Element(name = "title")
     lateinit var title: String
@@ -17,5 +17,13 @@ class Book {
 
     @field:Element(name = "author")
     lateinit var author: Author
+
+    override fun equals(other: Any?): Boolean {
+        return other is Book && id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.toInt()
+    }
 
 }

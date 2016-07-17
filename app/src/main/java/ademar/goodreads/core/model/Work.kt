@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root
 class Work {
 
     @field:Element(name = "id")
-    var id: Int = 0
+    var id: Long = 0
 
     @field:Element(name = "books_count")
     var booksCount: Int = 0
@@ -32,5 +32,13 @@ class Work {
 
     @field:Element(name = "best_book")
     lateinit var bestBook: Book
+
+    override fun equals(other: Any?): Boolean {
+        return other is Work && id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.toInt()
+    }
 
 }

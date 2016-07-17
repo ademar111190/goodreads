@@ -1,10 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/app_primary</item>
+        <item name="colorPrimaryDark">@color/app_primary_dark</item>
+        <item name="colorAccent">@color/app_accent</item>
+    </style>
+
+    <!-- Search -->
+
+    <style name="SearchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textViewStyle">@style/AppTextView</item>
+        <item name="android:textColorHighlight">@color/app_primary</item>
+        <item name="android:windowBackground">@color/background_800</item>
+        <item name="actionModeBackground">@color/app_context_toolbar</item>
+        <item name="actionModeStyle">@style/AppToolbarActionMode</item>
+        <item name="colorPrimary">@color/app_context_toolbar</item>
+        <item name="colorPrimaryDark">@color/app_context_status</item>
+        <item name="colorAccent">@color/app_accent</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <!-- Start -->
+
+    <style name="StartTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/bg_launch</item>
+    </style>
+
+    <!-- Toolbar -->
+
+    <style name="AppToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/app_primary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/actionBarSize</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="popupTheme">@style/AppToolbarPopupTheme</item>
+    </style>
+
+    <style name="AppToolbar.Light">
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/AppToolbarTitleTextAppearance</item>
+    </style>
+
+    <style name="AppToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/highlight_350</item>
+    </style>
+
+    <style name="AppToolbarPopupTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/background_800</item>
+        <item name="android:textColor">@color/text_100</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textViewStyle">@style/AppTextView.Regular</item>
+    </style>
+
+    <style name="AppToolbarActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="height">?android:attr/actionBarSize</item>
+    </style>
+
+    <!-- Shadow -->
+
+    <style name="AppShadow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_marginTop">?android:attr/actionBarSize</item>
+        <item name="android:background">@drawable/toolbar_shadow_dark</item>
+    </style>
+
+    <style name="AppShadow.Light">
+        <item name="android:background">@drawable/toolbar_shadow_light</item>
+    </style>
+
+    <style name="AppContentShadow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:foreground">@drawable/toolbar_shadow_dark</item>
+    </style>
+
+    <style name="AppContentShadow.Light">
+        <item name="android:foreground">@drawable/toolbar_shadow_light</item>
+    </style>
+
+    <style name="AppShadow.NoPosition">
+        <item name="android:layout_marginTop">@null</item>
+    </style>
+
+    <style name="AppShadow.Light.NoPosition">
+        <item name="android:layout_marginTop">@null</item>
+    </style>
+
+    <style name="AppShadow.NoPosition.Bottom">
+        <item name="android:background">@drawable/toolbar_shadow_dark_inverted</item>
+    </style>
+
+    <style name="AppShadow.Light.NoPosition.Bottom">
+        <item name="android:background">@drawable/toolbar_shadow_light_inverted</item>
+    </style>
+
+    <!-- TextView -->
+
+    <style name="AppTextView" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="AppTextView.Regular">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="AppTextView.Bold">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

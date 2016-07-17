@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="app_accent">#643fd1</color>
+    <color name="app_context_toolbar">#828282</color>
+    <color name="app_context_status">#686868</color>
+    <color name="app_icon">#737373</color>
+    <color name="app_icon_light">#ffffff</color>
+    <color name="app_primary">#b3a98d</color>
+    <color name="app_primary_dark">#553e19</color>
+
+    <!-- Background -->
+    <color name="background_800">#f2f2f2</color>
+    <color name="background_900">#ffffff</color>
+
+    <!-- Text -->
+    <color name="text_100">#000000</color>
+    <color name="text_500">#999999</color>
+
+    <!-- Highlights -->
+    <color name="highlight_350">#89000000</color>
+    <color name="highlight_430">#20000000</color>
+    <color name="highlight_500">#40ffffff</color>
 
 </resources>

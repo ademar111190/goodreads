@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
+
+    <item
+        android:id="@+id/clear"
+        android:icon="@drawable/ic_clear"
+        android:orderInCategory="1"
+        android:title="@string/search_menu_clear"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mic"
+        android:icon="@drawable/ic_mic"
+        android:orderInCategory="2"
+        android:title="@string/search_menu_mic"
+        app:showAsAction="always"/>
+
+</menu>

@@ -3,4 +3,17 @@
 
     <string name="app_name">Goodreads</string>
 
+    <!-- Main -->
+    <string name="main_label">Goodreads</string>
+    <string name="main_menu_search">Search</string>
+
+    <!-- Search -->
+    <string name="search_label">Search books</string>
+    <string name="search_default">Search by Book Title, Author, or ISBN</string>
+    <string name="search_empty">No results</string>
+    <string name="search_menu_clear">Clear search</string>
+    <string name="search_menu_mic">Voice search</string>
+    <string name="search_mic_prompt">Say the Book Title, Author, or ISBN</string>
+    <string name="search_reload">Data load fail.\nTouch to retry</string>
+
 </resources>

@@ -7,9 +7,17 @@ import org.simpleframework.xml.Root
 class Author {
 
     @field:Element(name = "id")
-    var id: Int = 0
+    var id: Long = 0
 
     @field:Element(name = "name")
     lateinit var name: String
+
+    override fun equals(other: Any?): Boolean {
+        return other is Author && id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.toInt()
+    }
 
 }

@@ -16,9 +16,9 @@ val DATABASE_VERSION = 1
 
 // region Model
 
-val AUTHOR_ID = 432
+val AUTHOR_ID = 432L
 val AUTHOR_NAME = "Ayn Rand"
-val BEST_BOOK_ID = 662
+val BEST_BOOK_ID = 662L
 val BEST_BOOK_IMAGE = "https://d.gr-assets.com/books/1405868167m/662.jpg"
 val BEST_BOOK_TITLE = "Atlas Shrugged"
 val SEARCH_END = 1
@@ -27,7 +27,7 @@ val SEARCH_START = 1
 val SEARCH_TOTAL = 1
 val WORK_AVERAGE_RATING = 3.67
 val WORK_BOOKS = 13
-val WORK_ID = 817219
+val WORK_ID = 817219L
 val WORK_PUBLICATION_DAY = 31
 val WORK_PUBLICATION_MONTH = 12
 val WORK_PUBLICATION_YEAR = 1957

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Goodreads</string>
+
+    <!-- Main -->
+    <string name="main_label">Goodreads</string>
+    <string name="main_menu_search">Procurar</string>
+
+    <!-- Search -->
+    <string name="search_label">Procurar livros</string>
+    <string name="search_default">Procure pelo nome do livro, pelo autor, ou pelo ISBN</string>
+    <string name="search_empty">Nenhum resultado</string>
+    <string name="search_menu_clear">Limpar busca</string>
+    <string name="search_menu_mic">Busca por voz</string>
+    <string name="search_mic_prompt">Diga o nome, o autor, ou o ISBN do livro</string>
+    <string name="search_reload">Não foi possível carregar os dados.\nToque para tentar novamente</string>
+
+</resources>
