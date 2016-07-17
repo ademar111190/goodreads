@@ -2,6 +2,7 @@ package ademar.goodreads.ui.common.activity
 
 import ademar.goodreads.R
 import ademar.goodreads.core.ext.app
+import ademar.goodreads.core.ext.findString
 import ademar.goodreads.core.service.Services
 import ademar.goodreads.ui.search.activity.SearchActivity
 import android.content.Intent
@@ -16,6 +17,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
+        toolbar.title = findString(R.string.main_label)
         toolbar.inflateMenu(R.menu.main)
         toolbar.setOnMenuItemClickListener { menu ->
             if (menu.itemId == R.id.search) {

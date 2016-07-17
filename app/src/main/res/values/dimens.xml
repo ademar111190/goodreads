@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="work_item_size">172dp</dimen>
+
 </resources>

@@ -3,6 +3,7 @@ package ademar.goodreads.core.service
 import mobi.porquenao.gol.Gol
 import retrofit2.Response
 import rx.Observable
+import rx.Subscription
 
 class Observatory<T, U : Response<T>>(val observer: Observable<U>) {
 
@@ -19,8 +20,8 @@ class Observatory<T, U : Response<T>>(val observer: Observable<U>) {
         return this
     }
 
-    fun subscribe() {
-        observer.subscribe({ item ->
+    fun subscribe(): Subscription {
+        return observer.subscribe({ item ->
             if (item.isSuccessful) {
                 success.invoke(item.body())
             } else {

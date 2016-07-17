@@ -1,45 +1,55 @@
 package ademar.goodreads.ui.search.adapter
 
-import ademar.goodreads.core.injector.AppComponent
 import ademar.goodreads.core.manager.SearchManager
+import ademar.goodreads.ui.common.holder.BaseHolder
+import ademar.goodreads.ui.common.holder.LoadHolder
 import ademar.goodreads.ui.common.holder.WorkHolder
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.View
 import android.view.ViewGroup
-import rx.android.schedulers.AndroidSchedulers.mainThread
-import rx.schedulers.Schedulers.io
-import javax.inject.Inject
 
-class SearchAdapter : RecyclerView.Adapter<WorkHolder> {
+class SearchAdapter(val searchManager: SearchManager) : RecyclerView.Adapter<BaseHolder<*>>() {
 
-    @Inject lateinit var searchManager: SearchManager
+    private val TYPE_ITEM = 1
+    private val TYPE_LOAD = 2
 
-    constructor() {
-        AppComponent.Initialize.get().inject(this)
-
+    init {
         setHasStableIds(true)
-
-        searchManager.publish
-                .subscribeOn(io())
-                .observeOn(mainThread())
-                .subscribe({ work ->
-                    notifyDataSetChanged()
-                }, {});
+        searchManager.publish.subscribe({ notifyDataSetChanged() }, {})
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): WorkHolder? {
-        return WorkHolder(parent)
+    override fun getItemViewType(position: Int): Int {
+        return if (position == searchManager.works.size) TYPE_LOAD else TYPE_ITEM
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseHolder<*>? {
+        return if (viewType == TYPE_ITEM) WorkHolder(parent) else LoadHolder(parent)
     }
 
     override fun getItemCount(): Int {
-        return searchManager.works.size
+        val size = searchManager.works.size
+        return size + (if (searchManager.total > size) 1 else 0)
     }
 
     override fun getItemId(position: Int): Long {
-        return searchManager.works.elementAt(position).id
+        return if (position == searchManager.works.size) -1 else searchManager.works[position].id
     }
 
-    override fun onBindViewHolder(holder: WorkHolder?, position: Int) {
-        holder?.bind(searchManager.works.elementAt(position))
+    override fun onBindViewHolder(holder: BaseHolder<*>?, position: Int) {
+        if (holder is WorkHolder) {
+            holder.bind(searchManager.works[position])
+        }
+        if (holder is LoadHolder) {
+            val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
+            layoutParams.isFullSpan = true
+            holder.itemView.visibility = View.VISIBLE
+            searchManager.next { success ->
+                if (!success) {
+                    holder.itemView.visibility = View.GONE
+                }
+            }
+        }
     }
 
 }

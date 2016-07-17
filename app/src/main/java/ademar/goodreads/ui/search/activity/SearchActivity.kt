@@ -1,10 +1,10 @@
 package ademar.goodreads.ui.search.activity
 
 import ademar.goodreads.R
+import ademar.goodreads.core.ext.BindDimen
 import ademar.goodreads.core.ext.BindView
 import ademar.goodreads.core.ext.app
 import ademar.goodreads.core.ext.onTextChanged
-import ademar.goodreads.core.injector.AppComponent
 import ademar.goodreads.core.manager.SearchManager
 import ademar.goodreads.ui.common.activity.BaseActivity
 import ademar.goodreads.ui.search.adapter.SearchAdapter
@@ -12,8 +12,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,7 +22,6 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import javax.inject.Inject
 
 class SearchActivity : BaseActivity() {
 
@@ -34,19 +33,18 @@ class SearchActivity : BaseActivity() {
     val reload: TextView by BindView(R.id.reload)
     val load: ProgressBar by BindView(R.id.load)
     val empty: TextView by BindView(R.id.empty)
+    val itemWidth: Float by BindDimen(R.dimen.work_item_size)
 
-    val adapter = SearchAdapter()
+    val searchManager = SearchManager()
+    lateinit var searchAdapter: SearchAdapter
 
     var hasVoiceRecognizer = false
     lateinit var inputMethod: InputMethodManager
     lateinit var recognizerIntent: Intent
 
-    @Inject lateinit var searchManager: SearchManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
-        AppComponent.Initialize.get().inject(this)
 
         recognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
@@ -57,10 +55,17 @@ class SearchActivity : BaseActivity() {
 
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_back_dark)
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener {
+            navigateUp(intent)
+        }
 
-        list.layoutManager = LinearLayoutManager(this)
-        list.adapter = adapter
+        searchAdapter = SearchAdapter(searchManager)
+        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        list.layoutManager = layoutManager
+        list.adapter = searchAdapter
+        list.viewTreeObserver.addOnGlobalLayoutListener {
+            layoutManager.spanCount = Math.max(1, Math.floor(list.width.toDouble() / itemWidth.toDouble()).toInt())
+        }
 
         searchField.onTextChanged { query ->
             showLoading()
@@ -71,6 +76,8 @@ class SearchActivity : BaseActivity() {
             showLoading()
             search(searchField.text)
         }
+
+        default.setOnClickListener { }
 
         showContentStart()
     }
@@ -118,6 +125,7 @@ class SearchActivity : BaseActivity() {
 
     fun search(query: CharSequence?) {
         if (query == null || query.length == 0) {
+            searchManager.clear()
             showContentStart()
         } else {
             showLoading()
@@ -148,7 +156,7 @@ class SearchActivity : BaseActivity() {
     }
 
     fun showContent() {
-        if (adapter.itemCount == 0) {
+        if (searchAdapter.itemCount == 0) {
             showEmpty()
         } else {
             switchVisibleView(list)
@@ -157,12 +165,11 @@ class SearchActivity : BaseActivity() {
 
     fun switchVisibleView(view: View) {
         invalidateOptionsMenu()
-        load.visibility = View.GONE
-        reload.visibility = View.GONE
-        list.visibility = View.GONE
-        default.visibility = View.GONE
-        empty.visibility = View.GONE
-        view.visibility = View.VISIBLE
+        load.visibility = if (view == load) View.VISIBLE else View.GONE
+        reload.visibility = if (view == reload) View.VISIBLE else View.GONE
+        list.visibility = if (view == list) View.VISIBLE else View.INVISIBLE
+        default.visibility = if (view == default) View.VISIBLE else View.GONE
+        empty.visibility = if (view == empty) View.VISIBLE else View.GONE
     }
 
     companion object {

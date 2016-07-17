@@ -19,6 +19,9 @@
 # Okio
 -dontwarn okio.**
 
+# Picasso
+-dontwarn com.squareup.okhttp.**
+
 # Retrofit
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }

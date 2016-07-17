@@ -17,6 +17,7 @@
 
         <activity
             android:name=".ui.common.activity.StartActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/StartTheme">
             <intent-filter>
@@ -27,13 +28,16 @@
 
         <activity
             android:name=".ui.common.activity.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/search_label"/>
 
         <activity
             android:name=".ui.search.activity.SearchActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/search_label"
             android:parentActivityName=".ui.common.activity.MainActivity"
-            android:theme="@style/SearchTheme"/>
+            android:theme="@style/SearchTheme"
+            android:windowSoftInputMode="adjustResize"/>
 
     </application>
 
