@@ -14,6 +14,7 @@ class BindDimen(@DimenRes val id: Int) {
     }
 
     operator fun setValue(thisRef: Activity, property: KProperty<*>, value: Float) {
+        throw UnsupportedOperationException("BindDimen is to be used as getter only")
     }
 
 }
@@ -26,6 +27,7 @@ class BindView<V : View>(@IdRes val id: Int) {
     }
 
     operator fun setValue(thisRef: Activity, property: KProperty<*>, value: V) {
+        throw UnsupportedOperationException("BindView is to be used as getter only")
     }
 
 }

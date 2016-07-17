@@ -14,6 +14,15 @@ val DATABASE_VERSION = 1
 
 // endregion
 
+// region Ext
+
+val ACTIVITY_DIMEN_ID = 123
+val ACTIVITY_DIMEN_VALUE = 42.0f
+val ACTIVITY_VIEW_ID = 321
+val EDIT_TEXT_TEXT = "Text"
+
+// endregion
+
 // region Model
 
 val AUTHOR_ID = 432L

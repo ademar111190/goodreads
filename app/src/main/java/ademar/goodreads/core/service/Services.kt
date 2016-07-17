@@ -10,16 +10,17 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 open class Services {
 
-    val retrofit = Retrofit.Builder()
+    val client: OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
+
+    val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(app().getString(R.string.api_url))
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(SimpleXmlConverterFactory.create())
-            .client(OkHttpClient.Builder()
-                    .addInterceptor(HttpLoggingInterceptor()
-                            .setLevel(HttpLoggingInterceptor.Level.BODY))
-                    .build())
+            .client(client)
             .build()
 
-    val searchService = retrofit.create(SearchService::class.java)
+    val searchService: SearchService = retrofit.create(SearchService::class.java)
 
 }
