@@ -2,7 +2,7 @@ package ademar.goodreads.core.ext
 
 import ademar.goodreads.App
 import android.app.Application
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 
 fun Any.app(): Application = App.instance!!
 

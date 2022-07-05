@@ -4,8 +4,8 @@ import ademar.goodreads.core.manager.SearchManager
 import ademar.goodreads.ui.common.holder.BaseHolder
 import ademar.goodreads.ui.common.holder.LoadHolder
 import ademar.goodreads.ui.common.holder.WorkHolder
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.view.View
 import android.view.ViewGroup
 
@@ -23,7 +23,7 @@ class SearchAdapter(val searchManager: SearchManager) : RecyclerView.Adapter<Bas
         return if (position == searchManager.works.size) TYPE_LOAD else TYPE_ITEM
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseHolder<*>? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<*> {
         return if (viewType == TYPE_ITEM) WorkHolder(parent) else LoadHolder(parent)
     }
 
@@ -36,7 +36,7 @@ class SearchAdapter(val searchManager: SearchManager) : RecyclerView.Adapter<Bas
         return if (position == searchManager.works.size) -1 else searchManager.works[position].id
     }
 
-    override fun onBindViewHolder(holder: BaseHolder<*>?, position: Int) {
+    override fun onBindViewHolder(holder: BaseHolder<*>, position: Int) {
         if (holder is WorkHolder) {
             holder.bind(searchManager.works[position])
         }

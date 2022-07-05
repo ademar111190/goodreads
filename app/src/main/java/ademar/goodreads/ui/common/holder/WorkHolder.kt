@@ -3,7 +3,7 @@ package ademar.goodreads.ui.common.holder
 import ademar.goodreads.R
 import ademar.goodreads.core.ext.app
 import ademar.goodreads.core.model.Work
-import android.support.v7.widget.CardView
+import androidx.cardview.widget.CardView
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView

@@ -1,8 +1,8 @@
 package ademar.goodreads.core.ext
 
 import android.app.Activity
-import android.support.annotation.DimenRes
-import android.support.annotation.IdRes
+import androidx.annotation.DimenRes
+import androidx.annotation.IdRes
 import android.view.View
 import kotlin.reflect.KProperty
 

@@ -6,7 +6,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.VectorDrawable
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import mobi.porquenao.recents.Recents
 
 class RecentsInitializer : Initializer.AsynchronousInitializer() {

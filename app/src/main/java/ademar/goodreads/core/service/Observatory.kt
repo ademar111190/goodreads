@@ -23,7 +23,12 @@ class Observatory<T, U : Response<T>>(val observer: Observable<U>) {
     fun subscribe(): Subscription {
         return observer.subscribe({ item ->
             if (item.isSuccessful) {
-                success.invoke(item.body())
+                val body = item.body()
+                if (body != null) {
+                    success.invoke(body)
+                } else {
+                    error.invoke(Exception("No body"))
+                }
             } else {
                 error.invoke(Exception(item.raw().toString()))
             }

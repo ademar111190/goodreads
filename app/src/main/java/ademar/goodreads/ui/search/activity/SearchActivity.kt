@@ -12,8 +12,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -60,7 +60,11 @@ class SearchActivity : BaseActivity() {
         }
 
         searchAdapter = SearchAdapter(searchManager)
-        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        val layoutManager =
+            StaggeredGridLayoutManager(
+                1,
+                StaggeredGridLayoutManager.VERTICAL
+            )
         list.layoutManager = layoutManager
         list.adapter = searchAdapter
         list.viewTreeObserver.addOnGlobalLayoutListener {
@@ -107,19 +111,19 @@ class SearchActivity : BaseActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             R.id.clear -> {
                 searchField.text = null
-                return true
+                true
             }
             R.id.mic -> {
                 if (hasVoiceRecognizer) {
                     startActivityForResult(recognizerIntent, VOICE_SEARCH)
                 }
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

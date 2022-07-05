@@ -3,10 +3,10 @@ package ademar.goodreads.ui.common.activity
 import ademar.goodreads.R
 import ademar.goodreads.core.ext.BindView
 import android.content.Intent
-import android.support.v4.app.NavUtils
-import android.support.v4.app.TaskStackBuilder
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.core.app.NavUtils
+import androidx.core.app.TaskStackBuilder
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 open class BaseActivity : AppCompatActivity() {
 

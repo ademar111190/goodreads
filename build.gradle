@@ -1,17 +1,10 @@
 buildscript {
     repositories {
-        jcenter()
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.3'
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
+        classpath "com.android.tools.build:gradle:7.2.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0"
     }
 }
